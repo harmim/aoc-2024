@@ -1,3 +1,6 @@
+/.session
+
+# Haskell
 dist
 dist-*
 cabal-dev
