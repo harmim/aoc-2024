@@ -64,6 +64,8 @@ else
   echo "Creating a boilerplate module for day $DAY at '$SRC_FILE'..."
   echo "Remember to update '$SRC_DIR/Main.hs':"
   echo "  - Update 'solutions' to use '$DAY_MODULE'."
+  echo "Remember to update 'aoc$YEAR.cabal':"
+  echo "  - Update 'library.exposed-modules' to use '$DAY_MODULE'."
   cat <<-EOF > "$SRC_FILE"
 module $DAY_MODULE where
 
