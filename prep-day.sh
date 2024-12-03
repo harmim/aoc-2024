@@ -5,7 +5,7 @@ set -e
 YEAR=2024
 SESSION_FILE=.session
 INPUT_DIR=input
-INPUT_TEST_DIR=test-input
+INPUT_TEST_DIR=input-test
 APP_DIR=app
 SRC_DIR=src
 
@@ -63,13 +63,22 @@ if [ -f "$SRC_FILE" ]; then
 else
   echo "Creating a boilerplate module for day $DAY at '$SRC_FILE'..."
   echo "Remember to update '$SRC_DIR/Main.hs':"
-  echo "  - Update 'solutions' to use '$DAY_MODULE'."
+  echo "  - Update 'solverMap' to use '$DAY_MODULE'."
   echo "Remember to update 'aoc$YEAR.cabal':"
   echo "  - Update 'library.exposed-modules' to use '$DAY_MODULE'."
   cat <<-EOF > "$SRC_FILE"
-module $DAY_MODULE where
+module $DAY_MODULE (parse, partOne, partTwo) where
 
-...
+type Lines = [String]
+
+parse :: String -> Lines
+parse = lines
+
+partOne :: Lines -> String
+partOne _ = ""
+
+partTwo :: Lines -> String
+partTwo _ = ""
 EOF
 fi
 

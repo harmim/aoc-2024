@@ -1,4 +1,4 @@
-module Day01 (parse, partOne, partTwo) where
+module Day02 (parse, partOne, partTwo) where
 
 type Lines = [String]
 

@@ -22,4 +22,6 @@ i/ *   O   O   * \i
 ## Results
 |                     Day                        | Part 1 | Part 2 |
 |:----------------------------------------------:|:------:|:------:|
-| [Day x](https://adventofcode.com/2024/day/x)   | ⭐     | ⭐     |
+| [Day 1](https://adventofcode.com/2024/day/1)   | ⭐     | ⭐     |
+| [Day 2](https://adventofcode.com/2024/day/2)   | ⭐     | ⭐     |
+| [Day 3](https://adventofcode.com/2024/day/3)   | ⭐     | ⭐     |
