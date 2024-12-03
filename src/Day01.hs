@@ -1,12 +1,28 @@
 module Day01 (parse, partOne, partTwo) where
 
-type Lines = [String]
+import Control.Arrow (right)
+import Data.List (sort)
+import Text.Parsec (ParseError, newline, sepEndBy1, spaces)
+import Text.Parsec qualified (parse)
+import Text.Parsec.String (Parser)
+import Text.ParserCombinators.Parsec.Number (int)
 
-parse :: String -> Lines
-parse = lines
+type Input' = [(Int, Int)]
 
-partOne :: Lines -> String
-partOne _ = ""
+type Input = ([Int], [Int])
 
-partTwo :: Lines -> String
-partTwo _ = ""
+parser :: Parser Input'
+parser = sepEndBy1 ((,) <$> int <* spaces <*> int) newline
+
+transformInput :: Input' -> Input
+transformInput input = (map fst input, map snd input)
+
+parse :: String -> Either ParseError Input
+parse = right transformInput . Text.Parsec.parse parser ""
+
+partOne :: Input -> String
+partOne (l, r) =
+  show $ sum $ map (\(a, b) -> abs (a - b)) $ zip (sort l) (sort r)
+
+partTwo :: Input -> String
+partTwo (l, r) = show $ sum $ map (\x -> x * (length $ filter (== x) r)) l

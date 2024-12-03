@@ -1,12 +1,19 @@
 module Day03 (parse, partOne, partTwo) where
 
-type Lines = [String]
+import Text.Parsec (ParseError, anyChar, many1, newline, sepEndBy1)
+import Text.Parsec qualified (parse)
+import Text.Parsec.String (Parser)
 
-parse :: String -> Lines
-parse = lines
+type Input = [String]
 
-partOne :: Lines -> String
+parser :: Parser Input
+parser = sepEndBy1 (many1 anyChar) newline
+
+parse :: String -> Either ParseError Input
+parse = Text.Parsec.parse parser ""
+
+partOne :: Input -> String
 partOne _ = ""
 
-partTwo :: Lines -> String
+partTwo :: Input -> String
 partTwo _ = ""
