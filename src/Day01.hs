@@ -2,7 +2,7 @@ module Day01 (parse, partOne, partTwo) where
 
 import Control.Arrow (right)
 import Data.List (sort)
-import Text.Parsec (ParseError, newline, sepEndBy1, spaces)
+import Text.Parsec (ParseError, newline, sepEndBy1, string)
 import Text.Parsec qualified (parse)
 import Text.Parsec.String (Parser)
 import Text.ParserCombinators.Parsec.Number (int)
@@ -12,7 +12,7 @@ type Input' = [(Int, Int)]
 type Input = ([Int], [Int])
 
 parser :: Parser Input'
-parser = sepEndBy1 ((,) <$> int <* spaces <*> int) newline
+parser = sepEndBy1 ((,) <$> int <* string "   " <*> int) newline
 
 transformInput :: Input' -> Input
 transformInput input = (map fst input, map snd input)
